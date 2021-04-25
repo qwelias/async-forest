@@ -1,0 +1,25 @@
+{
+  "name": "async-forest",
+  "version": "1.0.0",
+  "description": "Get a view of instanced async recources in an organised manner",
+  "main": "index.js",
+  "type": "module",
+  "engines": {"node": ">= 14"},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qwelias/async-forest.git"
+  },
+  "keywords": [
+    "async",
+    "hooks",
+    "tree",
+    "resources",
+    "eventloop"
+  ],
+  "author": "Ilia Baryshnikov <qwelias@gmail.com>",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/qwelias/async-forest/issues"
+  },
+  "homepage": "https://github.com/qwelias/async-forest#readme"
+}
