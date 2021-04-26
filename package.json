@@ -1,11 +1,13 @@
 {
   "name": "async-forest",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Get a view of instanced async resources in an organised manner",
   "main": "index.cjs",
   "type": "module",
   "module": "index.js",
-  "engines": {"node": ">= 14"},
+  "engines": {
+    "node": ">= 14"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/qwelias/async-forest.git"
