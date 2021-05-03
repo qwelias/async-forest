@@ -5,13 +5,13 @@ const nodes = Object.create(null)
 
 const hook = createHook({
     init: (aid, type, tid, resource) => {
-        nodes[aid] = { type, tid, resource, beforeTimes: [], afterTimes: [], time: Date.now() }
+        nodes[aid] = { type, tid, resource, time: Date.now() }
     },
     before: (aid) => {
-        nodes[aid]?.beforeTimes.push(Date.now())
+        nodes[aid]?.lastBeforeTime = Date.now()
     },
     after: (aid) => {
-        nodes[aid]?.afterTimes.push(Date.now())
+        nodes[aid]?.lastAfterTime = Date.now()
     },
     destroy: (aid) => {
         delete nodes[aid]
@@ -20,8 +20,7 @@ const hook = createHook({
 
 export const enable = () => {
     const id = executionAsyncId()
-    nodes[id] = nodes[id] || { tid: -1, type: null, beforeTimes: [], afterTimes: [], resource: executionAsyncResource() }
-    nodes[id].beforeTimes.push(Date.now())
+    nodes[id] = nodes[id] || { tid: -1, type: null, resource: executionAsyncResource() }
     hook.enable()
 }
 
@@ -62,5 +61,5 @@ export const show = (
     return roots
 }
 
-/** @typedef {{ type: string, resource: any, beforeTimes: number[], afterTimes: number[], time: number, children: Record<number, Node> }} Node */
-/** @typedef {{ type?: string | null, resource?: any, beforeTimes?: number[], afterTimes?: number[], time?: number, children: Record<number, Node> }} Root */
+/** @typedef {{ type: string, resource: any, lastBeforeTime?: number, lastAfterTime: number, time: number, children: Record<number, Node> }} Node */
+/** @typedef {{ type?: string | null, resource?: any, lastBeforeTime?: number, time?: number, children: Record<number, Node> }} Root */
